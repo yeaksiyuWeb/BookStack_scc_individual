@@ -46,6 +46,12 @@ jobs:
     - name: Build and push Docker image
       run: docker-compose up --build -d
 
+    - name: Check Container lists
+      run: docker ps -a
+
+    - name: Check logs
+      run: docker-compose logs db
+
     - name: Wait for database to be ready
       run: |
         until docker-compose exec -T db mysqladmin ping --silent; do
