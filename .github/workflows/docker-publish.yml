@@ -56,7 +56,7 @@ jobs:
       run: |
         until docker-compose exec -T db mysqladmin ping --silent; do
           echo "Waiting for database..."
-          sleep 5
+          sleep 20
         done
 
     - name: Create database table for testing
