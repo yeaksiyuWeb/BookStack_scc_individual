@@ -17,7 +17,10 @@ jobs:
       with:
         node-version: '18.16.1'
 
-    - name: Install dependencies
+    - name: Install php dependencies
+      run: composer install
+      
+    - name: Install node dependencies
       run: npm install
 
     - name: Build the project
@@ -38,15 +41,13 @@ jobs:
     #     password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and push Docker image
-      run: |
-        docker-compose up --build -d
+      run: docker-compose up --build -d
 
     - name: Install PHP dependencies for testing
       run: docker-compose run app composer install
 
     - name: Run tests
-      run: |
-        docker-compose run app php vendor/bin/phpunit
+      run: docker-compose run app php vendor/bin/phpunit
 
     - name: Shutdown Docker
       run: docker-compose down
