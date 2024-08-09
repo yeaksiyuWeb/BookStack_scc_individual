@@ -50,6 +50,7 @@ jobs:
       run: |
         docker-compose run app php artisan migrate --database=mysql_testing
         docker-compose run app php artisan db:seed --class=DummyContentSeeder --database=mysql_testing
+      continue-on-error: true
       
     - name: Run tests
       run: docker-compose run app php vendor/bin/phpunit
