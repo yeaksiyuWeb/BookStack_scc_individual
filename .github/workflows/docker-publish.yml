@@ -43,8 +43,8 @@ jobs:
     - name: Build and push Docker image
       run: docker-compose up --build -d
 
-    - name: Install PHP dependencies for testing
-      run: docker-compose run app composer install
+    # - name: Install PHP dependencies for testing
+    #   run: docker-compose run app composer install
 
     - name: Create database table for testing
       run: |
