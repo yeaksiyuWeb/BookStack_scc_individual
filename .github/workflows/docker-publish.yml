@@ -37,6 +37,9 @@ jobs:
     #     username: ${{ secrets.DOCKER_USERNAME }}
     #     password: ${{ secrets.DOCKER_PASSWORD }}
 
+    - name: Install PHP dependencies for testing
+      run: docker-compose run app composer install
+
     - name: Build and push Docker image
       run: |
         docker-compose up --build -d
